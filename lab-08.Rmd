@@ -49,18 +49,9 @@ weather %>%
 
 count(weather,RainTomorrow)
 
-weather %>%
-  filter(!is.na(RainTomorrow))%>%
-  select(where(~ all(!is.na(.))))
-
-
-
 weather_noNA <- weather [!is.na(weather$RainTomorrow), ]
 
 count(weather_noNA,RainTomorrow)
-
-
-
 
 
 ```

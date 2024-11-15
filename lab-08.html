@@ -403,11 +403,24 @@ values:</p>
 ## 17 MinTemp       0.0102 
 ## 18 MaxTemp       0.00867</code></pre>
 <ol style="list-style-type: decimal">
-<li><p>Are there any missing values in our variable of interest
+<li>Are there any missing values in our variable of interest
 <code>RainTomorrow</code>? If so, we filter them out and save the new
-dataset as <code>weather_noNA</code>.</p></li>
-<li><p>Which cities are the ones with more rain days? To do this, let’s
-analyze the <code>RainToday</code> variable.</p></li>
+dataset as <code>weather_noNA</code>.</li>
+</ol>
+<pre class="r"><code>count(weather,RainTomorrow)</code></pre>
+<pre><code>##   RainTomorrow      n
+## 1           No 110316
+## 2          Yes  31877
+## 3         &lt;NA&gt;   3267</code></pre>
+<pre class="r"><code>weather_noNA &lt;- weather [!is.na(weather$RainTomorrow), ]
+
+count(weather_noNA,RainTomorrow)</code></pre>
+<pre><code>##   RainTomorrow      n
+## 1           No 110316
+## 2          Yes  31877</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Which cities are the ones with more rain days? To do this, let’s
+analyze the <code>RainToday</code> variable.</li>
 </ol>
 </div>
 <div id="exercise-2-logistic-regression" class="section level1">
