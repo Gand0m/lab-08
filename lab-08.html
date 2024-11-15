@@ -422,6 +422,28 @@ count(weather_noNA,RainTomorrow)</code></pre>
 <li>Which cities are the ones with more rain days? To do this, let’s
 analyze the <code>RainToday</code> variable.</li>
 </ol>
+<pre class="r"><code>rainy_days_by_city &lt;- weather %&gt;%
+  filter(RainToday == &quot;Yes&quot;) %&gt;%        
+  group_by(Location) %&gt;%
+  arrange(desc(RainToday))  
+             
+count(rainy_days_by_city) %&gt;%
+  arrange(desc(n))</code></pre>
+<pre><code>## # A tibble: 49 × 2
+## # Groups:   Location [49]
+##    Location          n
+##    &lt;fct&gt;         &lt;int&gt;
+##  1 Portland       1094
+##  2 Cairns          950
+##  3 Walpole         949
+##  4 Dartmoor        921
+##  5 MountGambier    921
+##  6 NorfolkIsland   919
+##  7 Albany          902
+##  8 Witchcliffe     879
+##  9 CoffsHarbour    869
+## 10 Sydney          866
+## # ℹ 39 more rows</code></pre>
 </div>
 <div id="exercise-2-logistic-regression" class="section level1">
 <h1>Exercise 2: Logistic regression</h1>

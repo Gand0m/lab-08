@@ -61,6 +61,13 @@ count(weather_noNA,RainTomorrow)
 ```{r rain days}
 
 
+rainy_days_by_city <- weather %>%
+  filter(RainToday == "Yes") %>%        
+  group_by(Location) %>%
+  arrange(desc(RainToday))  
+             
+count(rainy_days_by_city) %>%
+  arrange(desc(n))
 
 ```
 
