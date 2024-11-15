@@ -76,15 +76,24 @@ count(rainy_days_by_city) %>%
 We will focus our analysis on the city of `Portland`.
 Remove `eval=FALSE` from below once you have defined the object `weather_noNA`.
 
-```{r eval=FALSE}
-# remove eval=FALSE
+```{r Portland weather}
 weather_Portland <- weather_noNA %>%
   filter(Location == "Portland")
 ```
 
 1. Try to predict `RainTomorrow` by fitting a linear regression using the variable `RainToday` and print the output using `tidy()`.
 
-```{r}
+```{r predicting weather tomorrow}
+
+weather %>%
+  mutate(RainToday = ifelse(RainToday == "Yes", 1, 0),
+         RainTomorrow = ifelse(RainTomorrow == "Yes", 1, 0))
+
+model <- lm(RainTomorrow ~ RainToday, data = weather)
+
+tidy_output <- tidy(model)
+print(tidy_output)
+
 
 ```
 
